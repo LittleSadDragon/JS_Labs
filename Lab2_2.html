@@ -1,0 +1,38 @@
+<!-- Змінюємо знак числа -->
+<html>
+    <HEAD> 
+<TITLE>Интервал между датами</TITLE> 
+
+<script language="JavaScript"> 
+
+function dateInterval()  
+{   
+    if(isNaN(time.h1.value) || isNaN(time.m1.value) || isNaN(time.h2.value) || isNaN(time.m2.value))
+    {
+        alert("Вы должны ввести число");
+        return;
+    }
+    var h1 = Number(time.h1.value);
+    var m1 = Number(time.m1.value);
+    var h2 = Number(time.h2.value);
+    var m2 = Number(time.m2.value);
+    var interval = (h2-h1)*60+(m2-m1);
+    if(h1 > h2 || ( h1 == h2 && m1 > m2))
+        interval = 1440 - (h1*60+m1) + h2*60 + m2;
+    var rm = interval%60;
+    var rh = (interval-rm)/60;
+    alert(rh+" часов "+rm+ " минут");
+}
+</script> 
+</HEAD> 
+<BODY bgcolor="#FFFCCC"> 
+        <FORM name="time" style = "width: 250px; border: 1px solid black; padding:5px"> 
+                Часы: <input type="text" size=5 name="h1">
+                Минуты: <input type="text" size=5 name="m1"><hr> 
+                Часы: <input type="text" size=5 name="h2">  
+                Минуты: <input type="text" size=5 name="m2"><hr>    
+                <input type="button" value="Найти интервал времени" onclick="dateInterval()" style ="margin-left:15%"> 
+                <input type="reset"style ="margin-left:35%">  
+        </FORM>
+</BODY>  
+</HTML>
